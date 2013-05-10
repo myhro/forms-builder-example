@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Teste</title>
+        <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+        {% block extrahead %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="span12">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load forms_builder_tags %}
+{% load url from future %}
+{% block extrahead %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/formset.js"></script>
+<style type="text/css">
+    .hidden {
+        display: none;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    {{ cadastro_form.as_p }}
+    <table class="table">
+        {% for form in campos_forms %}
+            {% if forloop.first %}
+                <thead>
+                    <tr>
+                        {% for field in form.visible_fields %}
+                            <th>{{ field.label }}</th>
+                        {% endfor %}
+                        <th>Remover</th>
+                    </tr>
+                </thead>
+            {% endif %}
+            <tr id="{{ form.prefix }}-row" class="dynamic-form">
+                {% for field in form.visible_fields %}
+                    <td>{{ field.errors.as_ul }} {{ field }}</td>
+                {% endfor %}
+                <td class="hidden">
+                    <a id="remove-{{ form.prefix }}-row" href="javascript:void(0)" class="delete-row">Remover</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4"><a href="javascript:void(0)" class="add-row">Adicionar</a></td>
+        </tr>
+    </table>
+    {{ campos_forms.management_form }}
+    <input type="submit" value="Salvar" />
+</form>
+{% endblock %}

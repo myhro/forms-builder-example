@@ -7,6 +7,13 @@
         {% endblock %}
     </head>
     <body>
+        {% if messages %}
+        <div class="span6 offset3">
+            {% for message in messages %}
+            <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
         <div class="span12">
             {% block content %}
             {% endblock %}

@@ -11,10 +11,11 @@ urlpatterns = patterns('',
     # url(r'^$', 'teste.views.home', name='home'),
     # url(r'^teste/', include('teste.foo.urls')),
     url(r'^$', 'teste.views.home', name='home'),
+    url(r'^criar/', 'teste.views.criar_editar_form', name='criar'),
+    url(r'^editar/(?P<form_id>\d+)/', 'teste.views.criar_editar_form', name='editar'),
     url(r'^entradas/(?P<form_id>\d+)/', 'teste.views.entradas', name='entradas'),
     url(r'^formulario/(?P<form_id>\d+)/', 'teste.views.formulario', name='formulario'),
     url(r'^listar/', 'teste.views.listar', name='listar'),
-    url(r'^novo/', 'teste.views.novo', name='novo'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

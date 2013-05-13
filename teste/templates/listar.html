@@ -3,7 +3,7 @@
 <h1>Lista de Formulários</h1>
 <ul>
     {% for form in forms %}
-        <li><a href="{% url 'formulario' form.id %}">{{ form }}</a></li>
+        <li><a href="{% url 'formulario' form.id %}">{{ form }}</a> - <a href="{% url 'editar' form.id %}">[Editar]</a></li>
     {% endfor%}
 </ul>
 {% endblock %}

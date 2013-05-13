@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load forms_builder_tags %}
 {% block content %}
-<h1>Formulário: {{ form.title }}</h1>
+<h1>Formulário</h1>
 {% render_built_form form %}
 <a href="{% url 'entradas' form.id %}" class="btn btn-primary">Exibir entradas</a>
 {% endblock %}

@@ -3,7 +3,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.transaction import commit_on_success
-from django.forms.formsets import formset_factory
 from django.forms.models import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect, render
 from forms_builder.forms.models import Form, Field, FormEntry, FieldEntry

@@ -1,0 +1,8 @@
+TODO
+====
+
+    * Avaliar possibilidade de utilizar 'login_required' na view e não no form
+    * Exibir botão de remover linha via jQuery na mesma coluna do 'Apagar' do formset
+    * Modificar página de confirmação de submissão de entrada do formulário
+    * Testar com usuários sem permissão de administrador
+    * Verificar possíveis mensagens não traduzidas na interface

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load extras %}
+{% block content %}
+<h1>Entradas</h1>
+<table class="table">
+    <tr>
+        {% for field in fields %}
+            <th>{{ field.label }}</th>
+        {% endfor %}
+    </tr>
+    {% for entrada in entradas %}
+        <tr>
+            {% for campo in entrada %}
+                <td>{{ campo.value }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+{% for entrada in entradas %}
+    <div class="span3" style="margin-bottom: 25px;">
+        {% for field, campo in fields|zip:entrada %}
+            <p><strong>{{ field.label }}</strong>: {{ campo.value }}</p>
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}

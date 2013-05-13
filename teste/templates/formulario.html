@@ -3,5 +3,5 @@
 {% block content %}
 <h1>Formulário: {{ form.title }}</h1>
 {% render_built_form form %}
-<a href="" class="btn btn-primary">Exibir entradas</a>
+<a href="{% url 'entradas' form.id %}" class="btn btn-primary">Exibir entradas</a>
 {% endblock %}

@@ -1,9 +1,9 @@
 $(function () {
     $('.add-row').click(function() {
-        return addForm(this, 'form');
+        return addForm(this, 'fields');
     });
     $('.delete-row').click(function() {
-        return deleteForm(this, 'form');
+        return deleteForm(this, 'fields');
     });
 })
 

@@ -15,6 +15,7 @@
     {{ cadastro_form.as_p }}
     <table class="table">
         {% for form in campos_forms %}
+            {{ form.id }}
             {% if forloop.first %}
                 <thead>
                     <tr>

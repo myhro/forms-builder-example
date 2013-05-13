@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.transaction import commit_on_success
 from django.forms.formsets import formset_factory
+from django.forms.models import inlineformset_factory
 from django.shortcuts import get_object_or_404, redirect, render
 from forms_builder.forms.models import Form, Field, FormEntry, FieldEntry
 from teste.forms import CadastroForm, CampoForm
@@ -12,22 +13,18 @@ from teste.forms import CadastroForm, CampoForm
 @commit_on_success
 def criar_editar_form(request, form_id=None):
     form_bd = None
-    campos_queryset = None
+    CampoFormSet = inlineformset_factory(Form, Field, CampoForm, extra=1)
     if form_id:
         form_bd = get_object_or_404(Form, id=form_id)
-        campos = Field.objects.filter(form_id=form_id)
-        CampoFormSet = formset_factory(CampoForm, extra=0)
-        campos_forms = CampoFormSet(request.POST or None, initial=campos.values())
+        campos_forms = CampoFormSet(request.POST or None, instance=form_bd)
     else:
-        CampoFormSet = formset_factory(CampoForm)
         campos_forms = CampoFormSet(request.POST or None)
     cadastro_form = CadastroForm(request.POST or None, instance=form_bd)
     if request.method == 'POST':
         if all([f.is_valid() for f in [cadastro_form, campos_forms]]):
             cadastro_form.save()
-            for f in campos_forms:
-                f.instance.form = cadastro_form.instance
-                f.save()
+            campos_forms.instance = cadastro_form.instance
+            campos_forms.save()
             messages.success(request, 'Formulário salvo com sucesso.')
             return redirect(listar)
         else:

@@ -2,5 +2,4 @@ TODO
 ====
 
     * Modificar página de confirmação de submissão de entrada do formulário
-    * Testar com usuários sem permissão de administrador
     * Verificar possíveis mensagens não traduzidas na interface

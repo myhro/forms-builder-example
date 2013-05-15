@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^forms/', include(forms_builder.forms.urls)),
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
 )
 
 urlpatterns += patterns('teste.views',

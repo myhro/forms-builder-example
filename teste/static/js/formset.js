@@ -23,6 +23,8 @@ function addForm(btn, prefix) {
         updateElementIndex(this, prefix, formCount);
         $(this).val('');
     });
+    // Removendo coluna do checkbox 'apagar' do inlineformset.
+    $(row).find('td:last').prev().remove();
     // Removendo atributo 'value' adicionado incorretamente aos checkboxes.
     $('input[type="checkbox"]').removeAttr('value');
     $(row).find('.delete-row').click(function() {

@@ -4,6 +4,10 @@
 <ul>
     {% for form in forms %}
         <li><a href="{% url 'formulario' form.id %}">{{ form }}</a> - <a href="{% url 'editar' form.id %}">[Editar]</a></li>
+    {% empty %}
+        <div class="alert alert-info">
+            Não formulários a serem listados.
+        </div>
     {% endfor%}
 </ul>
 {% endblock %}

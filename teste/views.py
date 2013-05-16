@@ -42,6 +42,11 @@ def formulario(request, form_id):
     form = get_object_or_404(Form, id=form_id)
     return render(request, 'formulario.html', locals())
 
+def formulario_enviado(request, slug):
+    form = get_object_or_404(Form, slug=slug)
+    messages.success(request, 'Entrada submetida com sucesso.')
+    return redirect(entradas, form.id)
+
 def home(request):
     return render(request, 'home.html', locals())
 

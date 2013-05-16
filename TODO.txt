@@ -1,4 +1,4 @@
 TODO
 ====
 
-    * Modificar página de confirmação de submissão de entrada do formulário
+    * ---
